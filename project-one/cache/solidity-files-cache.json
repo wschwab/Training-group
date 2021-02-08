@@ -215,8 +215,8 @@
       ]
     },
     "/home/x/code/Training-group/project-one/contracts/Curve.sol": {
-      "lastModificationDate": 1612365533368,
-      "contentHash": "eaed086f3591a9e9b34a986de9fde12c",
+      "lastModificationDate": 1612812860006,
+      "contentHash": "5b1dcae90d1efc7f2642a806af18ad4f",
       "sourceName": "contracts/Curve.sol",
       "solcConfig": {
         "version": "0.7.3",
@@ -250,6 +250,42 @@
       ],
       "artifacts": [
         "Curve"
+      ]
+    },
+    "/home/x/code/Training-group/project-one/contracts/MockToken.sol": {
+      "lastModificationDate": 1612782833278,
+      "contentHash": "b36bb5e84eb227c52b8173e740e39a86",
+      "sourceName": "contracts/MockToken.sol",
+      "solcConfig": {
+        "version": "0.7.3",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.7.0"
+      ],
+      "artifacts": [
+        "MockToken"
       ]
     }
   }

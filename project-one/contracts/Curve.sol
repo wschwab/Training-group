@@ -25,18 +25,18 @@ contract Curve {
 
     function buyPrice(uint256 _amount) public view returns(uint256) {
         uint256 supply = _token.totalSupply();
-        return solve(supply.add(_amount), supply);
+        return solve(supply, supply.add(_amount));
     }
 
     function sellReward(uint256 _amount) public view returns(uint256) {
         uint256 supply = _token.totalSupply();
-        return solve(supply, supply.sub(_amount));
+        return solve(supply.sub(_amount), supply);
     }
 
     function mint(uint256 _amount) public returns (bool) {
         uint256 cost = buyPrice(_amount);
         require(_collateral.allowance(msg.sender, address(this)) >= cost, "mint: unauthorized amount");
-        require(_collateral.transferFrom(msg.sender, address(this), _amount), "mint: transfer failed");
+        require(_collateral.transferFrom(msg.sender, address(this), cost), "mint: transfer failed");
 
         _token.mint(msg.sender, _amount);
         return true;
@@ -47,7 +47,7 @@ contract Curve {
         require(_token.allowance(msg.sender, address(this)) >= _amount, "burn: unauthorized amount");
         _token.burn(msg.sender, _amount);
 
-        require(_collateral.transfer(msg.sender, reward), "burn: burn failed");
+        require(_collateral.transfer(msg.sender, reward), "burn: transfer failed");
         return true;
     }
 
